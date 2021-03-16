@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_kit/screens/FeedScreen.dart';
 import 'package:mobile_kit/screens/LoginScreen.dart';
 import 'package:mobile_kit/widgets/GlobalAppBar.dart';
 import 'package:mobile_kit/widgets/PageActionButton.dart';
@@ -57,7 +58,13 @@ class _SignUpScreenState extends State<SignUpSreen> {
                 controlAffinity: ListTileControlAffinity.leading,
               ),
               PageActionButton(
-                  buttonText: 'Sign Up', subButtonText: 'Forgot your password?')
+                buttonText: 'Sign Up',
+                subButtonText: 'Forgot your password?',
+                onClick: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => FeedScreen()));
+                },
+              )
             ],
           ),
         ));

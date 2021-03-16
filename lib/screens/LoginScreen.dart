@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mobile_kit/widgets/GlobalAppBar.dart';
 import 'package:mobile_kit/widgets/PageActionButton.dart';
 
+import 'FeedScreen.dart';
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -28,7 +30,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     border: OutlineInputBorder(), labelText: 'Password'),
               ),
               PageActionButton(
-                  buttonText: 'Log In', subButtonText: 'Forgot your password?')
+                buttonText: 'Log In',
+                subButtonText: 'Forgot your password?',
+                onClick: () {
+                  print('clicking');
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => FeedScreen()));
+                },
+              )
             ],
           ),
         ));

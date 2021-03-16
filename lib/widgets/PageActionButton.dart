@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 class PageActionButton extends StatelessWidget {
   final String buttonText;
   final String subButtonText;
+  final Function onClick;
 
-  PageActionButton({@required this.buttonText, @required this.subButtonText});
+  PageActionButton(
+      {@required this.buttonText, @required this.subButtonText, this.onClick});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class PageActionButton extends StatelessWidget {
             child: Row(children: [
               Expanded(
                   child: ElevatedButton(
-                onPressed: () {},
+                onPressed: onClick,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(buttonText, style: TextStyle(fontSize: 16.0)),

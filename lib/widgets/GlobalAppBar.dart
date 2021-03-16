@@ -5,7 +5,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String actionText;
   final Function onPressed;
 
-  GlobalAppBar({@required this.title, this.onPressed, this.actionText});
+  const GlobalAppBar({@required this.title, this.onPressed, this.actionText});
 
   Size get preferredSize => new Size.fromHeight(kToolbarHeight);
 
@@ -26,7 +26,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: actionText != null && onPressed != null
               ? TextButton(
                   onPressed: onPressed,
-                  child: Text('Login',
+                  child: Text(actionText,
                       style: TextStyle(
                           color: const Color(0xff5DB075), fontSize: 16.0)))
               : null,
