@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_kit/screens/LoginScreen.dart';
+import 'package:mobile_kit/widgets/GlobalAppBar.dart';
+import 'package:mobile_kit/widgets/PageActionButton.dart';
 
 class SignUpSreen extends StatefulWidget {
   @override
@@ -11,24 +14,13 @@ class _SignUpScreenState extends State<SignUpSreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          title: Text('Sign Up',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30.0,
-                  color: Colors.black)),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 13.5),
-              child: TextButton(
-                  onPressed: () {},
-                  child: Text('Login',
-                      style: TextStyle(
-                          color: const Color(0xff5DB075), fontSize: 16.0))),
-            ),
-          ],
+        appBar: GlobalAppBar(
+          title: 'SignUp',
+          actionText: 'Login',
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => LoginScreen()));
+          },
         ),
         body: Container(
           color: Colors.white,
@@ -64,40 +56,8 @@ class _SignUpScreenState extends State<SignUpSreen> {
                     'I would like to receive your newsletter and other promotional information.'),
                 controlAffinity: ListTileControlAffinity.leading,
               ),
-              Expanded(
-                  child: SafeArea(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(top: 42.0),
-                      child: Row(children: [
-                        Expanded(
-                            child: ElevatedButton(
-                          onPressed: () {},
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Text('Sign Up',
-                                style: TextStyle(fontSize: 16.0)),
-                          ),
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateColor.resolveWith(
-                                  (states) => Color(0xff5DB075)),
-                              shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100.0),
-                              ))),
-                        ))
-                      ]),
-                    ),
-                    TextButton(
-                        onPressed: () {},
-                        child: Text('Forgot your password?'),
-                        style: TextButton.styleFrom(primary: Color(0xff5DB075)))
-                  ],
-                ),
-              ))
+              PageActionButton(
+                  buttonText: 'Sign Up', subButtonText: 'Forgot your password?')
             ],
           ),
         ));
