@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_kit/screens/SignUpScreen.dart';
+import 'package:mobile_kit/screens/content_screen.dart';
 import 'package:mobile_kit/widgets/GlobalAppBar.dart';
 
-class FeedScreen extends StatelessWidget {
+class FeedScreen extends StatefulWidget {
+  @override
+  _FeedScreenState createState() => _FeedScreenState();
+}
+
+class _FeedScreenState extends State<FeedScreen> {
+  int selectedIndex = 0;
+  var _pages = [
+    FeedScreen(),
+    SignUpSreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +50,28 @@ class FeedScreen extends StatelessWidget {
             ]),
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        onTap: (value) {
+          if (value == 1) {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ContentScreen()));
+          }
+          setState(() {
+            selectedIndex = value;
+          });
+        },
+        currentIndex: selectedIndex,
+        selectedFontSize: 15.0,
+        unselectedFontSize: 15.0,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.feedback), label: 'Feed'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.content_copy), label: 'Content'),
+          BottomNavigationBarItem(icon: Icon(Icons.store), label: 'Market'),
+          BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Profile'),
+        ],
       ),
     );
   }
